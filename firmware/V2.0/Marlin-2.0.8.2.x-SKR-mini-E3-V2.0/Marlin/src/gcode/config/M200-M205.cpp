@@ -156,7 +156,7 @@ void GcodeSuite::M205() {
   #if HAS_JUNCTION_DEVIATION
     if (parser.seenval('J')) {
       const float junc_dev = parser.value_linear_units();
-      if (WITHIN(junc_dev, 0.01f, 0.3f)) {
+      if (WITHIN(junc_dev, 0.01f, 100.0f)) {
         planner.junction_deviation_mm = junc_dev;
         TERN_(LIN_ADVANCE, planner.recalculate_max_e_jerk());
       }
